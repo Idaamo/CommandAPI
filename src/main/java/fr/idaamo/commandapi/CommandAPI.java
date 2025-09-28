@@ -1,5 +1,7 @@
-package fr.idaamo.commandapi;
+package fr.hibry.api.commands.api;
 
+import fr.hibry.api.APILoader;
+import fr.hibry.api.commands.admin.PluginList;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -66,6 +68,26 @@ public class CommandAPI {
             } else {
                 Bukkit.getLogger().severe("Command not found: " + commandName);
             }
+        }
+    }
+
+     /**
+     * The API needs a JavaPlugin instance to remap a command.
+     * @param commandName The name of the command to remap
+     * @param executor Executor of the command
+     * @param plugin Principal class of the plugin
+     */
+    public static void remapCommandByName(String commandName, CommandExecutor executor, Plugin plugin) {
+        Command command = listAllCommands().get(commandName.toLowerCase());
+        if (command != null) {
+            command.unregister(commandMap);
+            PluginCommand pluginCommand = createPluginCommand(commandName, plugin);
+            if (pluginCommand != null) {
+                pluginCommand.setExecutor(executor);
+                commandMap.register(plugin.getDescription().getName(), pluginCommand);
+            }
+        } else {
+            Bukkit.getLogger().severe("Command not found: " + commandName);
         }
     }
 
