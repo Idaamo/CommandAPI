@@ -49,6 +49,8 @@ public class MyPlugin extends JavaPlugin {
     public void onEnable() {
         // Register the command (/plugin for example)
         CommandAPI.registerCommand("bukkit.command.plugins", new Command(), this);
+        //By the name for example
+        CommandAPI.remapCommandByName("plugins", new Command(), this);
     }
 }
 ```
