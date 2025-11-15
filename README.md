@@ -7,39 +7,7 @@ All bukkit permissions are available here: [Bukkit Permissions](https://bukkit.f
 
 ## How to use
 
-### 1. Add the dependency 
-If you use maven:
-```xml
-
-<repositories>
-    <repository>
-        <id>bliteria-public</id>
-        <url>https://repo.bliteria.fr/</url>
-    </repository>
-</repositories>
-
-<dependencies>
-    <dependency>
-        <groupId>fr.idaamo</groupId>
-        <artifactId>CommandAPI</artifactId>
-        <version>1.0</version>
-    </dependency>
-</dependencies>
-```
-
-If you use gradle:
-```gradle
-
-repositories {
-    maven { url 'https://repo.bliteria.fr/' }
-}
-
-dependencies {
-    implementation 'fr.idaamo:CommandAPI:1.0'
-}
-```
-
-### 2. Use the api
+### Use the api
 ```java
 import fr.idaamo.commandapi.CommandAPI;
 
